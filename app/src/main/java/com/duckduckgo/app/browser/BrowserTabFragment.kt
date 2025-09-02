@@ -50,7 +50,6 @@ import android.view.ContextMenu
 import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
-import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams
 import android.webkit.PermissionRequest
 import android.webkit.SslErrorHandler
@@ -1999,9 +1998,9 @@ class BrowserTabFragment :
             is Command.ShowFullScreen -> {
                 binding.webViewFullScreenContainer.addView(
                     it.view,
-                    ViewGroup.LayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.MATCH_PARENT,
+                    LayoutParams(
+                        LayoutParams.MATCH_PARENT,
+                        LayoutParams.MATCH_PARENT,
                     ),
                 )
             }
@@ -2193,6 +2192,8 @@ class BrowserTabFragment :
             null -> {
                 // NO OP
             }
+
+            is Command.SubmitChat -> duckChat.openDuckChatWithAutoPrompt(it.query)
         }
     }
 

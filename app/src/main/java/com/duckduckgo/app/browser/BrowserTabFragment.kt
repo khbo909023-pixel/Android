@@ -3183,6 +3183,7 @@ class BrowserTabFragment :
         daxDialogIntroBubble.root.gone()
     }
 
+    @SuppressLint("AddDocumentStartJavaScriptUsage")
     private fun configureWebViewForBlobDownload(webView: DuckDuckGoWebView) {
         lifecycleScope.launch(dispatchers.main()) {
             if (isBlobDownloadWebViewFeatureEnabled(webView)) {

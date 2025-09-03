@@ -1935,11 +1935,17 @@ class BrowserTabFragment :
             is Command.ShowFireproofWebSiteConfirmation -> fireproofWebsiteConfirmation(it.fireproofWebsiteEntity)
             is Command.DeleteFireproofConfirmation -> removeFireproofWebsiteConfirmation(it.fireproofWebsiteEntity)
             is Command.RefreshAndShowPrivacyProtectionEnabledConfirmation -> {
+                webView?.let {
+                    webViewClient.configureWebView(it, null)
+                }
                 refresh()
                 privacyProtectionEnabledConfirmation(it.domain)
             }
 
             is Command.RefreshAndShowPrivacyProtectionDisabledConfirmation -> {
+                webView?.let {
+                    webViewClient.configureWebView(it, null)
+                }
                 refresh()
                 privacyProtectionDisabledConfirmation(it.domain)
             }
